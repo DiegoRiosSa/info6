@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
+use App\Models\Posts;
 
 class PostController extends Controller
 {
@@ -14,7 +16,11 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('dashboard.posts');
+        $posts = Posts::get();
+        return view('dashboard.post.posts',[
+            'posts'=> $posts
+        ]);
+        
     }
 
     /**
@@ -25,7 +31,7 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('dashboard.posts');
+        return view('dashboard.post.create');
     }
 
     /**
@@ -34,9 +40,24 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         //
+        //echo "Post Store";
+        //var_dump($request);
+        //dd($request ->url_clean);
+
+        /*$validated = $request->validate([
+            'tittle'=>'required | min:5 | max:500',
+            'url_clean' => 'required',
+            'content' => 'min:1 | max:500'
+        ]);*/
+        //dd($validated);
+
+        Posts::create($request->validated());
+        
+        return back()->with('status', 'Post created successfully');
+        
     }
 
     /**
@@ -57,10 +78,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Posts $post)
     {
         //
-        return "Edit: ".$id;
+        dd($post);
+        return view('dashboard.post.edit',[
+            'post' => $post
+        ]);
     }
 
     /**
