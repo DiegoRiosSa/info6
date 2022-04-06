@@ -27,10 +27,16 @@
         <td>
           <a href=""class="btn btn-danger">Delete</a>
         </td>
+        <form action="{{ rote("post.destroy", $post->id) }}" method="post">
+          @csrf
+          @method("DELETE")
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </tr>
     @endforeach
     
   </tbody>
 </table>
+<div class="mt-3">{{ $posts->links() }}</div>
   
 @endsection
