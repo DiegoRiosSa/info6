@@ -118,11 +118,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
+    public function destroy(Posts $post)
     {
         //
         //dd($posts);
-        $posts->delete();
+        $post->delete();
         return back()->with('status', 'Post deleted successfully');
     }
 }

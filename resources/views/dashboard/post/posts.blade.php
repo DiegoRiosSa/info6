@@ -25,7 +25,7 @@
         <a href="{{route('post.edit', $post->id)}}"class="btn btn-secondary">Edit</a>
       </td>
       <td>
-        <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $post->id }}" type="submit" class="btn btn-danger">Delete</button>
+        <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $post->id }}" type="button" class="btn btn-danger">Delete</button>
       </td>
       </td>
     </tr>
@@ -49,7 +49,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <form id="formDelete" action="{{route('post.destroy', 0)}}" method="POST">
           @csrf
-          @method("DELETE")
+          //@method("DELETE")
           <button class="btn btn-danger" type="submit">Eliminar</button>
         </form>
       </div>
