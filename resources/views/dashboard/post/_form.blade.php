@@ -1,7 +1,7 @@
 
       <div class="mb-3">
-        <label for="tittle" class="form-label">Titulo</label>
-        <input type="text" class="form-control" name="tittle" id="tittle" placeholder="Ingrese Titulo" value="{{old('tittle', $post->tittle)}}">
+        <label for="title" class="form-label">Titulo</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese Titulo" value="{{old('title', $post->title)}}">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1"> Url Limpia</label>

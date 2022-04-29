@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Posts extends Model
+class Categories extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'url_clean', 'content'];
+    protected $fillable = ['title', 'url_clean'];
 }

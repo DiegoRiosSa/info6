@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 500);
-            $table->string('url', 500);
-            $table->timestamps();
+        Schema::table('categories', function (Blueprint $table) {
+            //
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -28,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+            //
+            $table->dropColumn('deleted_at');
+        });
     }
 };

@@ -3,7 +3,7 @@
 @section('content')
 <h1>Post</h1>
 
-<a href="{{ route('post.create')}}" class="btn btn-success">Create</a>
+<a href="{{ route('category.create')}}" class="btn btn-success">Create</a>
 
 
 <table class="table table-hover">
@@ -18,16 +18,16 @@
   </thead>
   <tbody>
     
-    @foreach ($posts as $post)
+    @foreach ($categories as $category)
       <tr>
-      <th scope="row">{{$post->id}}</th>
-        <td>{{$post->title}}</td>
-        <td>{{$post->url_clean}}</td>
+      <th scope="row">{{$category->id}}</th>
+        <td>{{$category->title}}</td>
+        <td>{{$category->url}}</td>
         <td>
-          <a href="{{ route('post.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
+          <a href="{{ route('category.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
         </td>
         <td>
-          <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $post->id }}" type="submit" class="btn btn-danger">Delete</button>
+          <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $category->id }}" type="submit" class="btn btn-danger">Delete</button>
         </td>
 
       </tr>  
@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<div class="mt-3">{{ $posts->links() }}</div>
+<div class="mt-3">{{ $categories->links() }}</div>
 
 <div class="modal fade" id="deleteModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -51,7 +51,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form id="formDelete" action="{{route('post.destroy', 0)}}" method="POST">
+        <form id="formDelete" action="{{route('category.destroy', 0)}}" method="CATEGORY">
           @csrf
           @method("DELETE")
           <button class="btn btn-danger" type="submit">Eliminar</button>
@@ -90,7 +90,7 @@
     console.log(action);
     formDelete.setAttribute('action', action);                                    
     //console.log(formDelete.getAttribute('action'));
-    modalTitle.textContent = 'Post: ' + id;
+    modalTitle.textContent = 'Category: ' + id;
     //modalBodyInput.value = recipient
   })
 </script>
